@@ -45,7 +45,7 @@ pub fn build(b: *std.Build) void {
         },
         else => {
             const config_header = b.addConfigHeader(.{
-                .style = .{ .cmake = .{ .path = "include/SDL_config.h.cmake" } },
+                .style = .{ .cmake = b.path("include/SDL_config.h.cmake") },
                 .include_path = "SDL2/SDL_config.h",
             }, .{});
             lib.addConfigHeader(config_header);
