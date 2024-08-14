@@ -49,7 +49,7 @@ pub fn build(b: *std.Build) void {
                 .include_path = "SDL2/SDL_config.h",
             }, .{});
             lib.addConfigHeader(config_header);
-            lib.installConfigHeader(config_header, .{});
+            lib.installConfigHeader(config_header);
         },
     }
     lib.installHeadersDirectory("include", "SDL2");
