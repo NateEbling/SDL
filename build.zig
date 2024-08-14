@@ -9,13 +9,12 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    const t = lib.target_info.target;
 
     lib.addIncludePath(.{ .path = "include" });
     lib.addCSourceFiles(.{ .files = &generic_src_files });
     lib.defineCMacro("SDL_USE_BUILTIN_OPENGL_DEFINITIONS", "1");
     lib.linkLibC();
-    switch (t.os.tag) {
+    switch (target.result.os.tag) {
         .windows => {
             lib.addCSourceFiles(.{ .files = &windows_src_files });
             lib.linkSystemLibrary("setupapi");
